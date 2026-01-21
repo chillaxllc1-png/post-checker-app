@@ -2,7 +2,7 @@
 // - 判定は pass / caution / ng を表示するのみ（評価ではない）
 // - 記録しない
 // - 理由説明しない
-// - 第2層は“器だけ”用意し、今はUIに出さない
+// - 第2層は“分岐UIのみ”用意し、機能は未実装
 
 "use client";
 
@@ -27,7 +27,8 @@ export default function ResultClient() {
     const text = searchParams.get("text") || "";
 
     // --- 第2層への配線（今は free 固定想定）---
-    const mode = useResultMode(); // 今は "free" が返る想定
+    // 判定・記録・保証・集計には一切使わない
+    const mode = useResultMode(); // 現状は常に "free"
 
     // --- X 投稿画面 URL（テキストのみ引き継ぐ） ---
     const intentUrl = useMemo(() => {
@@ -40,7 +41,9 @@ export default function ResultClient() {
     return (
         <div className="w-full max-w-sm flex flex-col gap-10 text-center">
             {/* サービス名（最小・感情を乗せない） */}
-            <div className="text-xs text-zinc-400 tracking-wide">Post Checker</div>
+            <div className="text-xs text-zinc-400 tracking-wide">
+                Post Checker
+            </div>
 
             {/* 結果ステータス（評価・判断ではない） */}
             <ResultStatus type={type} />
@@ -50,8 +53,16 @@ export default function ResultClient() {
                 ※ この結果は、投稿の可否やアカウント状態を保証するものではありません。
             </p>
 
-            {/* 第1層/第2層の分岐（今は free 想定） */}
+            {/* 第1層 / 第2層 分岐UI（機能は未実装） */}
             <ResultBranch mode={mode} intentUrl={intentUrl} />
+
+            {/* 戻る動線（PC-5 FIX） */}
+            <a
+                href="/"
+                className="text-xs text-zinc-400 underline underline-offset-4"
+            >
+                戻る
+            </a>
         </div>
     );
 }

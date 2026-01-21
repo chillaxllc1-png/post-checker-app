@@ -1,11 +1,11 @@
 type Props = {
     mode: "free" | "paid";
-    intentUrl: string; // ★ここが追加：ResultClientが作ったURLを受け取る
+    intentUrl: string;
 };
 
 export default function ResultBranch({ mode, intentUrl }: Props) {
+    // 第2層（有料）
     if (mode === "paid") {
-        // 第2層（有料）※今はまだ運用しない想定。表示だけの器として残す。
         return (
             <div className="flex flex-col gap-4">
                 <p className="text-sm text-zinc-600">
@@ -26,7 +26,7 @@ export default function ResultBranch({ mode, intentUrl }: Props) {
         );
     }
 
-    // 第1層（無料）※今はこちらだけを使う
+    // 第1層（無料）FIX
     return (
         <div className="flex flex-col gap-4">
             <p className="text-sm text-zinc-600">
@@ -35,6 +35,19 @@ export default function ResultBranch({ mode, intentUrl }: Props) {
                 運用記録の対象ではありません。
             </p>
 
+            {/* 有料導線（FIX・売らない・説明しない） */}
+            <a
+                href="/record-mode"
+                className="w-full rounded-xl border border-zinc-300 py-4 text-zinc-700 text-sm text-center"
+            >
+                運用記録モードで確認を通す
+                <br />
+                <span className="text-xs text-zinc-500">
+                    （月額1,280円）
+                </span>
+            </a>
+
+            {/* 行為の完了 */}
             <a
                 href={intentUrl}
                 target="_blank"
@@ -43,13 +56,6 @@ export default function ResultBranch({ mode, intentUrl }: Props) {
             >
                 Xの投稿画面を開く
             </a>
-
-            {/* 将来ここに有料導線ボタンを足す（今は絶対に出さない） */}
-            {/*
-      <button className="w-full rounded-xl border border-zinc-200 py-4 text-sm">
-        運用記録モードで確認を通す（月額1,280円）
-      </button>
-      */}
         </div>
     );
 }

@@ -15,12 +15,9 @@ export default function PublicPage() {
     const [text, setText] = useState("");
 
     const onSubmit = () => {
-        // 第1層は常に pass（FIX）
+        if (!text.trim()) return; // 事故防止（最小）
         const type = "pass";
-
-        router.push(
-            `/result?type=${type}&text=${encodeURIComponent(text)}`
-        );
+        router.push(`/result?type=${type}&text=${encodeURIComponent(text)}`);
     };
 
     return (

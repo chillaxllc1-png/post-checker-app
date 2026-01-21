@@ -1,14 +1,28 @@
-import { SilentLog } from "./types";
-
 /**
- * 内部記録用（現在は未使用）
- * - UIから呼ばない
- * - 判定に使わない
- * - 分析に使わない
+ * 運用記録用（内部専用）
+ *
+ * 役割：
+ * - 「確認を通した」という事実を将来保存するための器
+ *
+ * 現時点のルール（FIX）：
+ * - UIからは直接呼ばない
+ * - 判定ロジックには使わない
+ * - 分析・集計・評価には使わない
+ * - 今は何も保存しない（NO-OP）
  */
+
+export type SilentLog = {
+    id: string;
+    createdAt: Date;
+    mode: "free" | "record";
+    resultType: "pass" | "caution" | "ng";
+};
+
 export async function writeSilentLog(_log: SilentLog): Promise<void> {
-    // TODO:
-    // - DB接続（Supabase / SQLite / Prisma など）
-    // - 現段階では何もしない
+    // TODO（将来）:
+    // - DB保存
+    // - アカウント紐付け
+    // - 課金状態との連動
+    // 今は絶対に何もしない
     return;
 }
