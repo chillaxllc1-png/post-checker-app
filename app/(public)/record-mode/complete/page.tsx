@@ -8,43 +8,33 @@ export default function RecordModeCompletePage() {
                     Post Checker
                 </div>
 
-                {/* 行為完了の見出し（FIX） */}
+                {/* 行為完了（評価しない・事実のみ） */}
                 <h1 className="text-base text-zinc-800">
-                    運用記録として保存されました
+                    運用記録として記録されました
                 </h1>
 
-                {/* 完了説明（事実のみ） */}
+                {/* 完了説明 */}
                 <p className="text-sm text-zinc-600 leading-relaxed">
                     この投稿は、
                     <br />
-                    運用記録モードで確認を通した履歴として
+                    運用記録モードで
                     <br />
-                    保存されました。
+                    確認を行った履歴として記録されました。
                 </p>
 
                 {/* 注意書き（必須・FIX） */}
                 <p className="text-[11px] text-zinc-400 leading-relaxed">
-                    ※ 本記録は、
-                    投稿の結果やアカウント状態を
-                    保証するものではありません。
+                    ※ 本記録は、投稿の結果や
+                    <br />
+                    アカウント状態を保証するものではありません。
                 </p>
 
-                {/* メインアクション */}
+                {/* 行動は1つだけ：戻る */}
                 <a
-                    href="https://twitter.com/intent/tweet"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/"
                     className="w-full rounded-xl bg-black py-4 text-white text-sm text-center"
                 >
-                    Xの投稿画面を開く
-                </a>
-
-                {/* サブアクション（戻る） */}
-                <a
-                    href="/result?type=pass"
-                    className="text-xs text-zinc-400 underline underline-offset-4"
-                >
-                    確認結果に戻る
+                    戻る
                 </a>
 
             </div>

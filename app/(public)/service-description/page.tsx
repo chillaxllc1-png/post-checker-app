@@ -34,15 +34,18 @@ export default function ServiceDescriptionPage() {
                 </h2>
 
                 <ul className="list-disc pl-5">
-                    <li>投稿前に確認を行ったという行為の成立</li>
+                    <li>
+                        投稿前に確認を行ったという行為の成立
+                        （確認プロセスを経たという事実の記録）
+                    </li>
                     <li>
                         有料プランでは、
                         その確認履歴をアカウント単位で記録
                     </li>
                     <li>
                         必要に応じて、
-                        事故後（凍結・制限等）の
-                        状況整理および運用再検討の支援
+                        事象発生後（凍結・制限等）における
+                        情報整理および運用方針の再確認支援
                     </li>
                 </ul>
 
@@ -63,6 +66,14 @@ export default function ServiceDescriptionPage() {
                     確認行為の記録および状況整理・支援という
                     役務提供に対する対価です。
                 </p>
+
+                {/* 戻る動線（最小・誘導しない） */}
+                <a
+                    href="/"
+                    className="pt-6 text-xs text-zinc-400 underline underline-offset-4 text-center"
+                >
+                    トップページに戻る
+                </a>
 
             </div>
         </main>

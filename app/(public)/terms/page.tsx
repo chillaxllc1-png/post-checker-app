@@ -18,7 +18,7 @@ export default function TermsPage() {
 
                 <p>
                     本サービスは、
-                    投稿前に所定の確認行為を行ったという事実を記録するためのWebサービスです。
+                    投稿前に所定の確認行為を行ったという事実を記録として残すためのWebサービスです。
                 </p>
 
                 <p>
@@ -70,7 +70,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p>
-                    本サービスには、月額課金およびスポット課金が含まれます。
+                    本サービスには、月額課金が含まれます。
                 </p>
 
                 <p>
@@ -110,6 +110,14 @@ export default function TermsPage() {
                     変更後の規約は、本サービス上に表示され、
                     ユーザーが確認可能となった時点で効力を生じます。
                 </p>
+
+                {/* 戻る動線（最小・誘導しない） */}
+                <a
+                    href="/"
+                    className="pt-6 text-xs text-zinc-400 underline underline-offset-4 text-center"
+                >
+                    トップページに戻る
+                </a>
 
             </div>
         </main>

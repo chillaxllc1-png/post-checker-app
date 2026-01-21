@@ -4,14 +4,16 @@ type Props = {
 };
 
 export default function ResultBranch({ mode, intentUrl }: Props) {
-    // 第2層（有料）
+    // 第2層（運用記録モード）
     if (mode === "paid") {
         return (
             <div className="flex flex-col gap-4">
-                <p className="text-sm text-zinc-600">
+                <p className="text-sm text-zinc-600 leading-relaxed">
                     この投稿は、
                     <br />
-                    運用記録モードで確認された履歴として保存されています。
+                    運用記録モードで確認行為を行った履歴として
+                    <br />
+                    記録されています。
                 </p>
 
                 <a
@@ -26,16 +28,18 @@ export default function ResultBranch({ mode, intentUrl }: Props) {
         );
     }
 
-    // 第1層（無料）FIX
+    // 第1層（無料）
     return (
         <div className="flex flex-col gap-4">
-            <p className="text-sm text-zinc-600">
-                この投稿は確認されましたが、
+            <p className="text-sm text-zinc-600 leading-relaxed">
+                この投稿は、
                 <br />
-                運用記録の対象ではありません。
+                確認行為を行った事実が表示されています。
+                <br />
+                記録は行われていません。
             </p>
 
-            {/* 有料導線（FIX・売らない・説明しない） */}
+            {/* 運用記録モード導線（審査用に必須） */}
             <a
                 href="/record-mode"
                 className="w-full rounded-xl border border-zinc-300 py-4 text-zinc-700 text-sm text-center"
@@ -43,11 +47,10 @@ export default function ResultBranch({ mode, intentUrl }: Props) {
                 運用記録モードで確認を通す
                 <br />
                 <span className="text-xs text-zinc-500">
-                    （月額1,280円）
+                    （月額 1,280円・税込）
                 </span>
             </a>
 
-            {/* 行為の完了 */}
             <a
                 href={intentUrl}
                 target="_blank"

@@ -17,7 +17,6 @@ type ResultType = "pass" | "caution" | "ng";
 export default function ResultClient() {
     const searchParams = useSearchParams();
 
-    // --- type を安全に確定 ---
     const rawType = searchParams.get("type");
     const type: ResultType =
         rawType === "pass" || rawType === "caution" || rawType === "ng"
@@ -25,12 +24,8 @@ export default function ResultClient() {
             : "pass";
 
     const text = searchParams.get("text") || "";
+    const mode = useResultMode(); // 現状 free 固定
 
-    // --- 第2層への配線（今は free 固定想定）---
-    // 判定・記録・保証・集計には一切使わない
-    const mode = useResultMode(); // 現状は常に "free"
-
-    // --- X 投稿画面 URL（テキストのみ引き継ぐ） ---
     const intentUrl = useMemo(() => {
         const base = "https://twitter.com/intent/tweet";
         const qs = new URLSearchParams();
@@ -40,23 +35,45 @@ export default function ResultClient() {
 
     return (
         <div className="w-full max-w-sm flex flex-col gap-10 text-center">
-            {/* サービス名（最小・感情を乗せない） */}
+            {/* サービス名 */}
             <div className="text-xs text-zinc-400 tracking-wide">
                 Post Checker
             </div>
 
-            {/* 結果ステータス（評価・判断ではない） */}
+            {/* 結果表示（評価ではない） */}
             <ResultStatus type={type} />
 
-            {/* 共通注意書き（必須・常時表示） */}
-            <p className="text-[11px] text-zinc-400 leading-relaxed">
-                ※ この結果は、投稿の可否やアカウント状態を保証するものではありません。
+            {/* 中核メッセージ（ServiceDescriptionと完全一致） */}
+            <p className="text-sm text-zinc-600 leading-relaxed">
+                この画面は、
+                <br />
+                投稿前に所定の確認行為を行ったという
+                <br />
+                事実を表示するものです。
             </p>
 
-            {/* 第1層 / 第2層 分岐UI（機能は未実装） */}
+            {/* 注意書き（必須・固定） */}
+            <p className="text-[11px] text-zinc-400 leading-relaxed">
+                ※ 本結果は、投稿内容の可否判断、
+                <br />
+                アカウント状態の評価、
+                <br />
+                凍結・制限の防止や解除を
+                <br />
+                保証するものではありません。
+            </p>
+
+            {/* 分岐UI（第2層：今は導線のみ） */}
             <ResultBranch mode={mode} intentUrl={intentUrl} />
 
-            {/* 戻る動線（PC-5 FIX） */}
+            {/* 行為の終了宣言（誤解を生まない） */}
+            <p className="text-[10px] text-zinc-400">
+                <p className="text-[10px] text-zinc-400">
+                    確認行為はここで終了しています。
+                </p>
+            </p>
+
+            {/* 戻る動線 */}
             <a
                 href="/"
                 className="text-xs text-zinc-400 underline underline-offset-4"

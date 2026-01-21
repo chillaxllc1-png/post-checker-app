@@ -21,7 +21,7 @@ export default function RecordModePage() {
                     <br />
                     投稿の是非を判断するものではなく、
                     <br />
-                    投稿前に確認を通したという事実を
+                    投稿前に確認行為を行ったという事実を
                     <br />
                     記録として残すためのモードです。
                 </p>
@@ -48,7 +48,7 @@ export default function RecordModePage() {
 
                 {/* 戻る動線（PC-8 FIX：Result に戻す） */}
                 <a
-                    href="/result?type=pass"
+                    href="/"
                     className="text-xs text-zinc-400 underline underline-offset-4"
                 >
                     戻る
