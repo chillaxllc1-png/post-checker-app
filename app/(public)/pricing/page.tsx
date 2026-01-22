@@ -29,6 +29,14 @@ export default function PricingPage() {
                     </div>
                 </div>
 
+                {/* ★ 追加：決済状態の明示（審査用に重要） */}
+                <p className="text-[11px] text-zinc-500 leading-relaxed">
+                    ※ 現在、決済機能は準備中です。
+                    <br />
+                    有料プランの利用開始および決済は、
+                    今後「運用記録モード」画面から行われる予定です。
+                </p>
+
                 <p className="text-[11px] text-zinc-500 leading-relaxed">
                     ※ 本料金は、成果や結果を保証するものではなく、
                     投稿前に確認行為を行ったという事実の記録、

@@ -43,15 +43,15 @@ export default function RecordModePage() {
                     disabled
                     className="w-full rounded-xl bg-black py-4 text-white text-sm opacity-40 cursor-not-allowed"
                 >
-                    準備中
+                    現在、この画面では決済は行えません
                 </button>
 
                 {/* 戻る動線（PC-8 FIX：Result に戻す） */}
                 <a
-                    href="/"
+                    href="/result?type=pass"
                     className="text-xs text-zinc-400 underline underline-offset-4"
                 >
-                    戻る
+                    確認結果に戻る
                 </a>
 
             </div>

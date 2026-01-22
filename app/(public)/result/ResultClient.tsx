@@ -66,12 +66,10 @@ export default function ResultClient() {
             {/* 分岐UI（第2層：今は導線のみ） */}
             <ResultBranch mode={mode} intentUrl={intentUrl} />
 
-            {/* 行為の終了宣言（誤解を生まない） */}
-            <p className="text-[10px] text-zinc-400">
-                <p className="text-[10px] text-zinc-400">
-                    確認行為はここで終了しています。
-                </p>
-            </p>
+            {/* 行為の終了宣言（p を使わない） */}
+            <div className="text-[10px] text-zinc-400">
+                確認行為はここで終了しています。
+            </div>
 
             {/* 戻る動線 */}
             <a

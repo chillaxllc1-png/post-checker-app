@@ -10,7 +10,7 @@ export default function RecordModeCompletePage() {
 
                 {/* 行為完了（評価しない・事実のみ） */}
                 <h1 className="text-base text-zinc-800">
-                    運用記録として記録されました
+                    運用記録が保存されました
                 </h1>
 
                 {/* 完了説明 */}
@@ -31,10 +31,10 @@ export default function RecordModeCompletePage() {
 
                 {/* 行動は1つだけ：戻る */}
                 <a
-                    href="/"
+                    href="/result?type=pass"
                     className="w-full rounded-xl bg-black py-4 text-white text-sm text-center"
                 >
-                    戻る
+                    確認結果に戻る
                 </a>
 
             </div>

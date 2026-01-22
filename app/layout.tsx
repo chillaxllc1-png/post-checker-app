@@ -1,10 +1,7 @@
-"use client";
-
 import type { Metadata } from "next";
-import { usePathname } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "@/app/(public)/components/Footer";
 import "./globals.css";
+import Footer from "@/app/(public)/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +14,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Post Checker",
-  description: "投稿前に、運用上の確認を行うためのWebサービス",
+  title: {
+    default: "Post Checker",
+    template: "%s | Post Checker",
+  },
+  description:
+    "Post Checker は、X（旧Twitter）運用において、投稿前に所定の確認行為を行ったという事実を記録するためのWebサービスです。投稿内容の可否判断や成果を保証するものではありません。",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Post Checker",
+    description:
+      "投稿前に所定の確認行為を行ったという事実を記録するためのWebサービスです。",
+    url: "https://post-checker.com",
+    siteName: "Post Checker",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Post Checker",
+    description:
+      "投稿前に所定の確認行為を行ったという事実を記録するためのWebサービスです。",
+  },
 };
 
 export default function RootLayout({
@@ -26,15 +45,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-
-  // トップページ判定
-  const isTopPage = pathname === "/";
-
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <div className="min-h-screen flex flex-col">
           {/* メインコンテンツ */}
@@ -42,10 +56,8 @@ export default function RootLayout({
             {children}
           </main>
 
-          {/* フッター */}
-          <div className={isTopPage ? "opacity-60" : ""}>
-            <Footer />
-          </div>
+          {/* フッター（全画面共通） */}
+          <Footer />
         </div>
       </body>
     </html>
