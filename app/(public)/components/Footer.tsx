@@ -39,6 +39,13 @@ export default function Footer() {
                 <Link href="/contact" className="hover:text-zinc-600">
                     お問い合わせ
                 </Link>
+
+                <a
+                    href="/record-mode/complete"
+                    className="text-[10px] text-zinc-400 underline underline-offset-4"
+                >
+                    審査確認用（決済後画面）
+                </a>
             </div>
         </footer>
     );

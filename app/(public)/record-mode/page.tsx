@@ -37,14 +37,14 @@ export default function RecordModePage() {
                     月額 1,280円（税込）
                 </div>
 
-                {/* 決済未接続（明示的に無効） */}
-                <button
-                    type="button"
-                    disabled
-                    className="w-full rounded-xl bg-black py-4 text-white text-sm opacity-40 cursor-not-allowed"
+                {/* 決済導線（FIX） */}
+                <a
+                    href="/checkout/record-mode"
+                    className="w-full rounded-xl bg-black py-4 text-white text-sm text-center
+               active:opacity-80 transition"
                 >
-                    現在、この画面では決済は行えません
-                </button>
+                    決済に進む
+                </a>
 
                 {/* 戻る動線（PC-8 FIX：Result に戻す） */}
                 <a
