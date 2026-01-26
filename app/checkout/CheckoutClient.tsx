@@ -65,6 +65,7 @@ export default function CheckoutClient() {
                 )}
 
                 <button
+                    type="button"
                     onClick={startCheckout}
                     disabled={loading}
                     className="w-full rounded-xl bg-black py-3 text-white text-sm disabled:opacity-40"
