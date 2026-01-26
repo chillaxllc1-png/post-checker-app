@@ -32,21 +32,21 @@ export default function RecordModePage() {
                     投稿の結果やアカウント状態を保証するものではありません。
                 </p>
 
-                {/* 価格表示（売らない・FIX） */}
+                {/* 価格表示（FIX） */}
                 <div className="text-sm text-zinc-700">
                     月額 1,280円（税込）
                 </div>
 
-                {/* 決済導線（FIX） */}
+                {/* 決済導線（FIX：/checkout に統一） */}
                 <a
-                    href="/checkout/record-mode"
+                    href="/checkout"
                     className="w-full rounded-xl bg-black py-4 text-white text-sm text-center
-               active:opacity-80 transition"
+                    active:opacity-80 transition"
                 >
-                    決済に進む
+                    運用記録モードを有効化する
                 </a>
 
-                {/* 戻る動線（PC-8 FIX：Result に戻す） */}
+                {/* 戻る動線（FIX） */}
                 <a
                     href="/result?type=pass"
                     className="text-xs text-zinc-400 underline underline-offset-4"
