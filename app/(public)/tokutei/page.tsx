@@ -60,13 +60,13 @@ export default function TokuteiPage() {
 
                     <p>
                         <span className="font-medium">役務提供時期：</span>
-                        決済完了後、確認履歴の記録等の役務を直ちに利用可能となります。
+                        決済完了後、確認履歴の記録等の役務を利用可能となります。
                     </p>
 
                     <p>
                         <span className="font-medium">返品・キャンセルについて：</span>
                         本サービスはデジタルサービスの性質上、
-                        決済完了後の返品・返金には原則として対応しておりません。
+                        決済完了後の返品・返金には対応しておりません。
                     </p>
                 </div>
 
