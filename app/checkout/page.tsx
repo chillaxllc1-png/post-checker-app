@@ -9,12 +9,12 @@ export default async function CheckoutPage() {
     const cookieStore = await cookies();
     const sessionUser = cookieStore.get("session_user")?.value;
 
+    // ログイン必須
     if (!sessionUser) {
         redirect("/login");
     }
 
-    // 🔒 v1（審査提出段階）ではサブスク状態判定は行わない
-    // 状態管理は Webhook 実装後に有効化する
-
+    // v1（審査提出段階）では「サブスク状態判定」や「自動振り分け」はしない。
+    // ここでは常に CheckoutClient を出す（審査用に挙動を固定する）。
     return <CheckoutClient />;
 }
