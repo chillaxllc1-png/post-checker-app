@@ -2,20 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-/**
- * 第1層｜無料・判断なし
- * - 判定ロジックなし（常に pass）
- * - 記録しない
- * - 理由説明しない
- * - UXは「通す」だけ
- */
 export default function PublicPage() {
     const router = useRouter();
     const [text, setText] = useState("");
 
     const onSubmit = () => {
-        if (!text.trim()) return; // 事故防止（最小）
+        if (!text.trim()) return;
         const type = "pass";
         router.push(`/result?type=${type}&text=${encodeURIComponent(text)}`);
     };
@@ -24,37 +18,52 @@ export default function PublicPage() {
         <main className="min-h-screen flex items-center justify-center px-4">
             <div className="w-full max-w-md flex flex-col gap-6 text-center">
 
-                {/* サービス名（最小・感情を乗せない） */}
+                {/* サービス名 */}
                 <div className="text-xs text-zinc-400 tracking-wide">
                     Post Checker
                 </div>
 
-                {/* 上部1行説明（FIX） */}
+                {/* ★ 追加：会員制・月額であることの明示（最小） */}
+                <div className="text-[11px] text-zinc-400 leading-relaxed">
+                    ※ 本サービスはアカウント登録が必要な月額制サービスです
+                </div>
+
+                {/* 上部説明 */}
                 <p className="text-base text-zinc-800">
                     投稿前に、運用上の確認を行います。
                 </p>
 
                 {/* 投稿テキスト入力 */}
                 <textarea
-                    className="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200"
+                    className="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm"
                     rows={7}
                     placeholder="実際に投稿する内容を入力してください"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
 
-                {/* 画像選択（後で実装・今はダミー） */}
+                {/* ダミー画像 */}
                 <div className="w-full rounded-xl border border-dashed border-zinc-200 px-4 py-6 text-sm text-zinc-400">
                     ［画像を選択］（後で実装）
                 </div>
 
-                {/* メインアクション（行為のみ） */}
+                {/* メインアクション */}
                 <button
                     onClick={onSubmit}
-                    className="w-full rounded-xl bg-black py-4 text-white text-sm text-center active:opacity-90 transition"
+                    className="w-full rounded-xl bg-black py-4 text-white text-sm"
                 >
                     確認を通す
                 </button>
+
+                {/* ★ 追加：ログイン／新規登録導線（インフラ） */}
+                <div className="flex justify-center gap-4 text-xs text-zinc-400">
+                    <Link href="/login" className="underline">
+                        ログイン
+                    </Link>
+                    <Link href="/signup" className="underline">
+                        新規登録
+                    </Link>
+                </div>
 
             </div>
         </main>
