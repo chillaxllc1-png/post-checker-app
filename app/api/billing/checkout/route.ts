@@ -4,6 +4,9 @@ import { cookies } from "next/headers";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+/**
+ * 🔹 POST：決済開始（既存そのまま・一切変更なし）
+ */
 export async function POST() {
     const cookieStore = await cookies();
     const sessionUser = cookieStore.get("session_user")?.value;
@@ -50,4 +53,19 @@ export async function POST() {
     return NextResponse.json({
         checkoutUrl: session.url,
     });
+}
+
+/**
+ * 🔹 GET：誤アクセス・二重実行時の保険
+ * - 405 を出さない
+ * - 審査・UX対策
+ * - ロジックには一切影響しない
+ */
+export async function GET() {
+    return NextResponse.json(
+        {
+            error: "Method not allowed",
+        },
+        { status: 200 }
+    );
 }
