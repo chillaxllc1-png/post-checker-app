@@ -4,10 +4,14 @@ import { useState } from "react";
 
 export default function CheckoutClient() {
     const [loading, setLoading] = useState(false);
+    const [clicked, setClicked] = useState(false); // ← 追加
     const [error, setError] = useState<string | null>(null);
 
     async function startCheckout() {
-        if (loading) return;
+        // ★ 二重クリック完全防止
+        if (clicked) return;
+
+        setClicked(true);
         setLoading(true);
         setError(null);
 
@@ -35,7 +39,6 @@ export default function CheckoutClient() {
     return (
         <main className="min-h-screen flex items-center justify-center px-4">
             <div className="w-full max-w-sm flex flex-col gap-6 text-center">
-
                 <div className="text-xs text-zinc-400 tracking-wide">
                     PostChecker
                 </div>
@@ -67,7 +70,7 @@ export default function CheckoutClient() {
                 <button
                     type="button"
                     onClick={startCheckout}
-                    disabled={loading}
+                    disabled={loading || clicked} // ★ ここ重要
                     className="w-full rounded-xl bg-black py-3 text-white text-sm disabled:opacity-40"
                 >
                     {loading ? "処理中..." : "クレジットカードで決済する"}
